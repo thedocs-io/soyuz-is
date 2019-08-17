@@ -1,0 +1,96 @@
+apply plugin: "java"
+apply plugin: "groovy"
+apply plugin: "maven"
+apply plugin: "signing"
+
+group = "io.thedocs"
+archivesBaseName = "soyuz-is"
+version = "1.0"
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.google.code.findbugs:jsr305:3.0.0"
+
+    compileOnly "org.projectlombok:lombok:1.16.8"
+
+    //test
+    testCompile "junit:junit:4.12"
+    testCompile "org.codehaus.groovy:groovy-all:2.3.6"
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.3"
+    testCompile "com.google.guava:guava:18.0"
+    testCompile "org.projectlombok:lombok:1.16.8"
+}
+
+task sourcesJar(type: Jar) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = "javadoc"
+    from "build/docs/javadoc"
+}
+
+artifacts {
+    archives jar
+    archives javadocJar
+    archives sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "3.5"
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name "soyuz-is"
+                packaging "jar"
+                // optionally artifactId can be defined here
+                description "truthy checks for Java"
+                url "https://github.com/thedocs-io/soyuz-is"
+
+                scm {
+                    url "scm:git@github.com:thedocs-io/soyuz-is.git"
+                    connection "scm:git@github.com:thedocs-io/soyuz-is.git"
+                    developerConnection "scm:git@github.com:thedocs-io/soyuz-is.git"
+                }
+
+                licenses {
+                    license {
+                        name "The Apache License, Version 2.0"
+                        url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+
+                developers {
+                    developer {
+                        id "fedotxxl"
+                        name "Fedor Belov"
+                    }
+                }
+            }
+        }
+    }
+}

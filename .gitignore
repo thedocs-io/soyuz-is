@@ -1,0 +1,26 @@
+# idea
+/.idea
+.idea/
+*.iws
+*.iml
+*.ipr
+
+#sass
+.sass-cache/
+
+# "temporary" build files
+target/
+build/
+/out/
+
+#gradle
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+#npm
+node_modules/
+
+#bower
+_bower_components/
