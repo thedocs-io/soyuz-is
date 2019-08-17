@@ -32,8 +32,8 @@ File                                    | exists
 ```
 <dependency>
     <groupId>io.thedocs</groupId>
-    <artifactId>soyuz-is-to</artifactId>
-    <version>0.72</version>
+    <artifactId>soyuz-is</artifactId>
+    <version>1.0</version>
 </dependency>
 ```
 
@@ -44,6 +44,6 @@ repositories {
 }
 
 dependencies {
-    compile 'io.thedocs:soyuz-is-to:0.72'
+    compile 'io.thedocs:soyuz-is:1.0'
 }
 ```
