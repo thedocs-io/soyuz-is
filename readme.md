@@ -48,6 +48,11 @@ dependencies {
 }
 ```
 
+### Import to java class
+```
+import io.thedocs.soyuz.is;
+```
+
 ## Dependencies
 This library depends on `com.google.code.findbugs:jsr305` (`javax.annotation.Nullable`)
 
