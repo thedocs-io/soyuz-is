@@ -56,5 +56,10 @@ import io.thedocs.soyuz.is;
 ## Dependencies
 This library depends on `com.google.code.findbugs:jsr305` (`javax.annotation.Nullable`)
 
+## Other useful libraries
+- [soyuz-to](https://github.com/thedocs-io/soyuz-to) - simple way to convert `X` data type to `Y`
+- [soyuz-loge](https://github.com/thedocs-io/soyuz-loge) - slf4j wrapper which makes your logs cleaner and easier to read / find
+- [soyuz-validator](https://github.com/thedocs-io/soyuz-validator) - bean fluent validator based on builder pattern
+
 ## License
 MIT
