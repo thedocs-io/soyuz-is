@@ -47,3 +47,9 @@ dependencies {
     compile 'io.thedocs:soyuz-is:1.0'
 }
 ```
+
+## Dependencies
+This library depends on `com.google.code.findbugs:jsr305` (`javax.annotation.Nullable`)
+
+## License
+MIT
